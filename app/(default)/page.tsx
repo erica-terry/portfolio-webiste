@@ -6,7 +6,6 @@ export const metadata = {
 import Hero from '@/components/hero'
 import Resume from '@/components/resume'
 import Projects from '@/components/projects'
-import Testimonials from '@/components/testimonials'
 import Contact from '@/components/contact'
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       {/* <Features /> */}
       <Projects />
       <Resume />
-      {/* <Testimonials /> */}
       <Contact />
     </>
   )

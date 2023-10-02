@@ -11,5 +11,6 @@ type ResumeItem = {
     endDate: Date,
     city: string,
     state: string,
-    tags: Tag[]
+    tags: Tag[],
+    image: string | false
 }

@@ -4,7 +4,6 @@ import { Roboto } from 'next/font/google'
 
 import Header from '@/components/ui/header'
 
-
 const font = Roboto({
   subsets: ['latin'],
   variable: '--font-roboto',

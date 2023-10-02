@@ -31,7 +31,8 @@ export default function Resume() {
       {
         text: "React",
         link: false
-      } as Tag]
+      } as Tag],
+      image: "/images/resume-featured-1.png"
     } as unknown as ResumeItem
   ]
 
@@ -60,7 +61,7 @@ export default function Resume() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h2 mb-4">Explore my Resume</h1>
-            <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat.</p>
+            {/* <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat.</p> */}
           </div>
 
           {/* Section content */}
@@ -68,28 +69,22 @@ export default function Resume() {
 
             {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-10 lg:col-span-8 md:mt-6" data-aos="fade-right">
-              {/* <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 mb-3">Powerful suite of tools</h3>
-                <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-              </div> */}
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
                 <div className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 hover:cursor-pointer ${tab !== 1 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`} onClick={(e) => { e.preventDefault(); setTab(1); }}>
                   {resume.map((item, k) => {
                     return (<ResumeBlock key={k.toString()} resumeItem={item} tab={tab} setTab={setTab} />)
-                  })
-                  }
+                  })}
                 </div>
               </div>
             </div>
-
             {/* Tabs items */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-2 lg:col-span-4 mb-8 md:mb-0 md:order-1">
               <div className="transition-all">
-                <div className="relative flex flex-col text-center lg:text-right" data-aos="zoom-y-out" ref={tabs}>
-                  {/* Item 1 */}
+                <div className="relative flex flex-col text-center lg:text-right" data-aos="zoom-y-out" ref={tabs}>{resume.map((item, k) => (
                   <Transition
-                    show={tab === 1}
+                    show={tab === k + 1}
+                    key={k.toString()}
                     appear={true}
                     className="w-full"
                     enter="transition ease-in-out duration-700 transform order-first"
@@ -102,48 +97,12 @@ export default function Resume() {
                     unmount={false}
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      {item.image &&
+                        (<Image className="md:max-w-none mx-auto rounded" src={item.image} width={500} height="462" alt="Features bg" />)
+                      }
                     </div>
-                  </Transition>
-                  {/* Item 2 */}
-                  <Transition
-                    show={tab === 2}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16"
-                    enterTo="opacity-100 translate-y-0"
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0"
-                    leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
-                    unmount={false}
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
-                    </div>
-                  </Transition>
-                  {/* Item 3 */}
-                  <Transition
-                    show={tab === 3}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16"
-                    enterTo="opacity-100 translate-y-0"
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0"
-                    leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
-                    unmount={false}
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
-                    </div>
-                  </Transition>
+                  </Transition>)
+                )}
                 </div>
               </div>
             </div>

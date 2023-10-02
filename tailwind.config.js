@@ -41,6 +41,10 @@ module.exports = {
           800: '#285E61',
           900: '#234E52',
         },
+        theme: {
+          100: '#DDACB8',
+          200: '#AE2945'
+        }
       },
       boxShadow: {
         xs: '0 0 0 1px rgba(0, 0, 0, 0.16)',
@@ -124,7 +128,7 @@ module.exports = {
       },
       zIndex: {
         '-1': '-1',
-      },
+      }
     },
   },
   plugins: [
